@@ -10,7 +10,7 @@
 <body>
 
     <form class="w-75 mx-auto">
-        <div>
+        　<div>
             <p class="mt-3">お名前（必須）</p>
             <input class="form-control w-100 mt-1" name="name" placeholder="" required>
           </div>
@@ -106,9 +106,9 @@
         $(function () {
             $('form').submit(function () {
                 const name    = $('input[name="name"]').val();
-                const udetate = $('input[name="area"]').val();
-                const fukkin  = $('input[name="step"]:checked').map(function() {return $(this).val();}).get().join(', ');
-                const haikin  = $('input[name="question"]').val();
+                const area = $('input[name="area"]').val();
+                const step  = $('input[name="step"]:checked').map(function() {return $(this).val();}).get().join(', ');
+                const question  = $('input[name="question"]').val();
                 const msg = `${name}\n${area}\n${step}\n${question}`;
                 sendText(msg);
                 return false;
