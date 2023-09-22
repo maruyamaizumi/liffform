@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>筋トレ管理</title>
+    <title>家づくりアンケート</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
@@ -10,27 +10,61 @@
 <body>
 
     <form class="w-75 mx-auto">
-        <p class="mt-3">名前</p>
         <div>
+            <p class="mt-3">お名前（必須）</p>
             <input class="form-control w-100 mt-1" name="name" placeholder="" required>
-        </div>
-        <p class="mt-3">腕立て</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="udetate" required>
-        </div>
-        <p class="mt-3">腹筋</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="fukkin" required>
-        </div>
-        <p class="mt-3">背筋</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="haikin" required>
-        </div>
-        <p class="mt-3">スクワット</p>
-        <div>
-            <input class="form-control w-100 mt-1" name="sukuwat" required>
-        </div>
-        <input type="submit" class="mt-4 btn btn-primary" value="送信">
+          </div>
+          
+          <div>
+            <p class="mt-3">ご希望の施工エリア（必須）</p>
+            <input class="form-control w-100 mt-1" name="area" required>
+          </div>
+          
+          <p class="mt-3">ご検討されているお住まいについて</p>
+          <div>
+            <label for="step_1">
+            <input type="checkbox" id="step_1" name="step" value="新築住宅" />
+            新築住宅</label>
+          </div>
+          <div>
+            <label for="step_2">
+            <input type="checkbox" id="step_2" name="step" value="持ち家の建て替え" />
+            持ち家の建て替え</label>
+          </div>
+          <div>
+            <label for="step_3">
+            <input type="checkbox" id="step_3" name="step" value="持ち家のリフォーム" />
+            持ち家のリフォーム</label>
+          </div>
+          <div>
+            <label for="step_4">
+            <input type="checkbox" id="step_4" name="step" value="中古住宅購入・リノベーション" />
+            中古住宅購入・リノベーション</label>
+          </div>
+          <div>
+            <label for="step_5">
+            <input type="checkbox" id="step_5" name="step" value="店舗・店舗併用住宅" />
+            店舗・店舗併用住宅</label>
+          </div>
+          <div>
+            <label for="step_6">
+            <input type="checkbox" id="step_6" name="step" value="その他" />
+            その他</label>
+          </div>
+          <div>
+            <label for="step_7">
+            <input type="checkbox" id="step_7" name="step" value="わからない" />
+            わからない</label>
+          </div>
+          
+          <div>
+            <p class="mt-3">相談・質問したいこと（必須）</p>
+            <input class="form-control w-100 mt-1" name="question" required>
+          </div>
+          
+          <div>
+            <input type="submit" class="mt-4 btn btn-primary" value="送信">
+          </div>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -72,11 +106,10 @@
         $(function () {
             $('form').submit(function () {
                 const name    = $('input[name="name"]').val();
-                const udetate = $('input[name="udetate"]').val();
-                const fukkin  = $('input[name="fukkin"]').val();
-                const haikin  = $('input[name="haikin"]').val();
-                const sukuwat = $('input[name="sukuwat"]').val();
-                const msg = `${name}\n${udetate}\n${fukkin}\n${haikin}\n${sukuwat}`;
+                const udetate = $('input[name="area"]').val();
+                const fukkin  = $('input[name="step"]:checked').map(function() {return $(this).val();}).get().join(', ');
+                const haikin  = $('input[name="question"]').val();
+                const msg = `${name}\n${area}\n${step}\n${question}`;
                 sendText(msg);
                 return false;
             });
