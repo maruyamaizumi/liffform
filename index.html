@@ -109,7 +109,7 @@
                 const area = $('input[name="area"]').val();
                 const step  = $('input[name="step"]:checked').map(function() {return $(this).val();}).get().join(', ');
                 const question  = $('input[name="question"]').val();
-                const msg = `${name}\n${area}\n${step}\n${question}`;
+                const msg = `お名前：${name}\n希望施工エリア：${area}\nご検討されているお住まい：${step}\nご相談・ご質問内容：${question}`;
                 sendText(msg);
                 return false;
             });
